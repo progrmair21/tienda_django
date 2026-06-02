@@ -1,0 +1,41 @@
+{% extends 'productos/base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h1>Productos</h1>
+    {% if user.is_authenticated %}
+        <a href="/productos/crear/" class="btn btn-primary">+ Nuevo Producto</a>
+    {% endif %}
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in object_list %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>
+                <a href="/productos/{{ producto.pk }}/" class="btn btn-secondary">Ver</a>
+                {% if user.is_authenticated %}
+                    <a href="/productos/{{ producto.pk }}/editar/" class="btn btn-primary">Editar</a>
+                    <a href="/productos/{{ producto.pk }}/eliminar/" class="btn btn-danger">Eliminar</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" style="text-align:
+                </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %} center;">No hay productos cargados.</td>
