@@ -36,10 +36,20 @@
 </form>
             {% else %}
                 <a href="/login/" class="btn btn-primary">Iniciar sesión</a>
+                <a href="/registro/" class="btn btn-secondary">Registrarse</a>
             {% endif %}
         </div>
     </nav>
     <div class="container">
+        {% if messages %}
+    {% for message in messages %}
+        <div style="padding: 10px; margin-bottom: 15px; border-radius: 4px;
+            background: {% if message.tags == 'error' %}#f8d7da{% else %}#d4edda{% endif %};
+            color: {% if message.tags == 'error' %}#721c24{% else %}#155724{% endif %};">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
         {% block content %}
         {% endblock %}
     </div>
