@@ -11,7 +11,7 @@ Permite realizar operaciones CRUD con autenticación de usuarios.
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/progrmair21/tienda_django.git
 cd tienda_django
 ```
 
