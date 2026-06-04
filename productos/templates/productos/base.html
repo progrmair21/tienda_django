@@ -29,7 +29,7 @@
         <a href="/productos/" style="font-size: 1.2em; font-weight: bold;">🛒 Tienda Django</a>
         <div>
             {% if user.is_authenticated %}
-                <span>Hola, {{ user.username }}!</span>
+                <a href="/perfil/" style="color: white;">Hola, {{ user.username }}!</a>
                <form method="post" action="/logout/" style="display: inline;">
     {% csrf_token %}
     <button type="submit" class="btn btn-secondary">Cerrar sesión</button>

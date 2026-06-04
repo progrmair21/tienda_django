@@ -2,8 +2,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from .models import Producto
+from django.contrib import messages
 
 class ProductoListView(ListView):
     model = Producto
@@ -46,3 +50,17 @@ class RegistroView(CreateView):
     def form_invalid(self, form):
         messages.error(self.request, 'Por favor corregí los errores del formulario.')
         return super().form_invalid(form)
+    from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView
+from django.contrib.auth.models import User
+
+@method_decorator(login_required, name='dispatch')
+class PerfilView(UpdateView):
+    model = User
+    fields = ['username', 'email', 'first_name', 'last_name']
+    template_name = 'registration/perfil.html'
+    success_url = reverse_lazy('producto-lista')
+
+    def get_object(self):
+        return self.request.user
