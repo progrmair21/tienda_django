@@ -51,3 +51,13 @@ python manage.py runserver
 - `/admin/` → Panel de administración
 - `/login/` → Iniciar sesión
 - `/logout/` → Cerrar sesión
+## Registro de usuarios
+- `/registro/` → Crear cuenta nueva
+
+## URL Pública (Producción)
+La aplicación está desplegada en PythonAnywhere:
+- https://alejo21.pythonanywhere.com/productos/
+
+## Credenciales de prueba
+- **Usuario:** admin
+- **Contraseña:** admin1234
